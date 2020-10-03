@@ -16,3 +16,7 @@ logoff.bat - This is my custom logoff script, I use this each night to log off m
 putty_backup.bat - This will backup all of your PuTTY sessions to a .reg file, so you can then copy it around and load them into another machine
 
 start-up.bat - My custom startup batch file.
+master
+
+Thankyou
+master
