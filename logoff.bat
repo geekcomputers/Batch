@@ -29,6 +29,10 @@ REM Remove list of Recently opened documents - You can get a copy of sdelete her
 
 sdelete "%USERPROFILE%\Recent\*.*"
 
+REM Clears DNS records and Resets TCP/IP
+
+ipconfig /flushdns
+
 REM Compress the days puttylogs - 1.2 
 
 python puttylogs.py
