@@ -6,39 +6,39 @@ In the scripts the comments etc are lined up correctly when they are viewed in [
 
 ## Scripts in the repository
 
-### 1. [openCMD.bat](https://github.com/geekcomputers/Batch/openCMD.bat)
-
-I have used this before when I have been restricted access to the run menu on a PC, this simple batch file will give a cmd window.
-
-### 2. [defragment.bat](https://github.com/geekcomputers/defragment.bat)
+### 1. **defragment.bat**
 
 This is what I used to use to schedule a defrag of my windows PC, I used to have this scheduled to run in the night when I know I wouldn't be on the machine.
 
-### 3. [iTunes.bat](https://github.com/geekcomputers/Batch/iTunes.bat)
-
-This was a very basic script I used to schedule to backup my iTunes library to an external drive.
-
-### 4. [lockPC.bat](https://github.com/geekcomputers/Batch/lockPC.bat)
-
-You could have this on your desktop, so you could simple click on this to lock your PC when you step away from your desk, you could also schedule this to run at a certain time of night.
-
-### 5. [logOff.bat](https://github.com/geekcomputers/Batch/logOff.bat)
-
-This is my custom logoff script, I use this each night to log off my PC at work.
-
-### 6. [puttyBackup.bat](https://github.com/geekcomputers/Batch/puttyBackup.bat)
-
-This will backup all of your PuTTY sessions to a .reg file, so you can then copy it around and load them into another machine
-
-### 7. [startup.bat](https://github.com/geekcomputers/Batch/startup.bat)
-
-My custom startup batch file.
-
-### 8. [doskey.bat](https://github.com/geekcomputers/Batch/doskey.bat)
+### 2. **doskey.bat**
 
 This script demonstrates how to use aliases on the command line.
 
-### 9. [whereis.bat](https://github.com/geekcomputers/Batch/whereis.bat)
+### 3. **iTunes.bat**
+
+This was a very basic script I used to schedule to backup my iTunes library to an external drive.
+
+### 4. **lockPC.bat**
+
+You could have this on your desktop, so you could simple click on this to lock your PC when you step away from your desk, you could also schedule this to run at a certain time of night.
+
+### 5. **logOff.bat**
+
+This is my custom logoff script, I use this each night to log off my PC at work.
+
+### 6. **openCMD.bat**
+
+I have used this before when I have been restricted access to the run menu on a PC, this simple batch file will give a cmd window.
+
+### 7. **puttyBackup.bat**
+
+This will backup all of your PuTTY sessions to a .reg file, so you can then copy it around and load them into another machine
+
+### 8. **startup.bat**
+
+This script allows some services and programs to start automatically.
+
+### 9. **whereis.bat**
 
 This script shows the path of a program.
 
