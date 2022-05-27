@@ -1,14 +1,42 @@
-@echo off
+:: ===========================================================================================================
+:: @file        whereis.bat
+:: @brief       Shows where a program is .i.e whereis java
+:: @author      Craig Richards
+:: @date        03.03.2013
+:: @version     1.0
+:: @syntax      whereis.bat <program name>
+:: @usage       whereis.bat java
+:: @see         https://github.com/sebetci/geekcomputers/Batch/whereis.bat
+:: @test        OK
+:: @todo        Notify the client if the program is not present in the system path.
+:: ===========================================================================================================
 
-REM Script Name		: whereis.cmd
-REM Author				: Craig Richards
-REM Created			: 3rd-April-2013
-REM Last Modified	: 
-REM Version				: 1.0
-REM Modifications		: 
+@ECHO OFF
 
-REM	 Description		: Shows where a program is .i.e whereis java
+:: The HELP function is called.
+CALL :HELP
 
-@echo on
+IF %ERRORLEVEL% EQU 0 (
+    @FOR %%E IN (%PATHEXT%) DO @FOR %%I IN (%1%%E) DO @IF NOT "%%~$PATH:I"=="" (
+        ECHO %%~$PATH:I
+        GOTO :EOF
+    )
+)
 
-@for %%e in (%PATHEXT%) do @for %%i in (%1%%e) do @if NOT "%%~$PATH:i"=="" echo %%~$PATH:i
+GOTO :EOF
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function prints the help menu on the screen.
+:: @parameter  None
+:: @return     Returns 1 if the help menu is displayed.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:HELP
+    FOR %%H IN (/h /help -help -h) DO (
+        IF /I "%~1" EQU "%%~H" (
+            ECHO.
+            ECHO [BRIEF] Shows where a program is .i.e whereis java
+            ECHO [USAGE] whereis.bat ^<program name^>
+            EXIT /B 1
+        )
+    )
+    EXIT /B 0
