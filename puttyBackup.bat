@@ -1,37 +1,51 @@
-@echo off
+:: ===========================================================================================================
+:: @file        puttyBackup.bat
+:: @brief       This is used to backup all my PuTTY settings out of the registry
+:: @author      Craig Richards
+:: @date        19.01.2011
+:: @version     1.0
+:: @usage       puttyBackup.bat
+:: @see         https://github.com/sebetci/geekcomputers/Batch/puttyBackup.bat
+:: @changelog   1.1. Edited the script to create variables for the filename and the registry key.
+:: @note        This script must be run in a command window with administrator rights.
+:: @test        X
+:: @todo        The existence of files and directories should be checked.
+:: ===========================================================================================================
 
-REM The above command turns off the output for the script
+@ECHO OFF
 
-REM Script Name		: putty_backup.bat
-REM Author				: Craig Richards
-REM Created			: 19th-January-2011
-REM Last Modified	: 17th-October-2011
-REM Version				: 1.1
-REM Modifications		: 1.1 - Craig Richards - 13th September 2011 - Edited the script to create variables for the filename and the registry key
-REM				  			Also used the Windows environment variables %SYSTEMDRIVE% and %USERPROFILE%
-REM							%SYSTEMDRIVE% = Drive containing Windows root directory usually c:\
-REM							%USERPROFILE% = C:\Documents and Settings\Username
-REM
-REM Description		: This is used to backup all my PuTTY settings out of the registry
+CALL :HELP
 
-REM Variable Settings
+IF %ERRORLEVEL% EQU 0 (
+    :: This will create a variable called date, the format is DD-MM-YYYY
+    FOR /F "TOKENS=1,2,3 DELIMS=& " %%A IN ('DATE /T) DO (SET DATE=%%A-%%B-%%C)
 
-REM This will create a variable called date, the format is DD-MM-YYYY
+    :: This sets the variable for the backup file name
+    SET BackupFile = putty.%DATE%.reg
 
-For /f "tokens=1,2,3 delims=/ " %%a in ('date /t') do (set date=%%a-%%b-%%c)
+    :: This sets the variable for the registry key that is getting backed up
+    SET RegKey=HKEY_CURRENT_USER\Software\SimonTatham\PuTTY
 
-REM This sets the variable for the backup file name
+    :: The /e is for part of the registry, in this case the key listed above in the variable regkey
+    :: The /a is for ASCII output, if you omit the /a the file will be twice a large
+    REGEDIT /EA %SYSTEMDRIVE%\%BackupFile% %RegKey%
+    REGEDIT /EA "%HOMEPATH%\Dropbox\%BackupFile%" %RegKey%
+)
 
-set bck_file=putty.%date%.reg
+GOTO :EOF
 
-REM This sets the variable for the registry key that is getting backed up
-
-set regkey=HKEY_CURRENT_USER\Software\SimonTatham\PuTTY
-
-REM Main Program
-
-REM The /e is for part of the registry, in this case the key listed above in the variable regkey
-REM The /a is for ASCII output, if you omit the /a the file will be twice a large
-
-regedit /ea %SYSTEMDRIVE%\%bck_file% %regkey%
-regedit /ea "%USERPROFILE%\My Documents\My Dropbox\%bck_file%" %regkey%
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function prints the help menu on the screen.
+:: @parameter  None
+:: @return     Returns 1 if the help menu is displayed.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:HELP
+    FOR %%H IN (/h /help -help -h) DO (
+        IF /I "%~1" EQU "%%~H" (
+            ECHO.
+            ECHO [BRIEF] This is used to backup all my PuTTY settings out of the registry
+            ECHO [USAGE] puttyBackup.bat
+            EXIT /B 1
+        )
+    )
+    EXIT /B 0
