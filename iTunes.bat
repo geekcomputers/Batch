@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        iTunes.bat
 :: @brief       Batch file I used to use to backup my iTunes library on my pc, scheduled via the at command
-:: @author      Craig Richards
-:: @date        24.01.2008
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       iTunes.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/iTunes.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/iTunes.bat
 :: @reference   https://samsoft.org.uk/iTunes/scripts.asp
 :: @reference   https://ss64.com/nt/move.html
 :: @reference   https://ss64.com/nt/md.html

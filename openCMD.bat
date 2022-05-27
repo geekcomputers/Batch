@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        openCMD.bat
 :: @brief       Used to get a command shell when you don't have access to the Run dialog box in windows
-:: @author      Craig Richards
-:: @date        03.11.2011
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       openCMD.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/openCMD.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/openCMD.bat
 :: @reference   https://ss64.com/nt/start.html
 :: @test        OK
 :: ===========================================================================================================

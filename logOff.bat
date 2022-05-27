@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        logOff.bat
 :: @brief       Custom log off batch script for my current work PC
-:: @author      Craig Richards
-:: @date        15.03.2011
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       logOff.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/logOff.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/logOff.bat
 :: @reference   http://technet.microsoft.com/en-us/sysinternals/bb897443
 :: @changelog   1.1. Changed hard coded path from C:\Documents and Settings\my name to %USERPROFILE%
 :: @changelog   1.1. Changed the hard coded path for drive to %HOMEDRIVE%

@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        startup.bat
 :: @brief       Custom start-up batch file for my current work PC
-:: @author      Craig Richards
-:: @date        08.12.2010
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       startup.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/startup.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/startup.bat
 :: @reference   https://ss64.com/nt/subst.html
 :: @requirement https://www.thegeekstuff.com/scripts/puttycm.zip
 :: @changelog   1.1. Added the like to create a "virtual" drive for the putty keys

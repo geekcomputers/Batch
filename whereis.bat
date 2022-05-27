@@ -1,12 +1,11 @@
 :: ===========================================================================================================
 :: @file        whereis.bat
 :: @brief       Shows where a program is .i.e whereis java
-:: @author      Craig Richards
-:: @date        03.03.2013
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @syntax      whereis.bat <program name>
 :: @usage       whereis.bat java
-:: @see         https://github.com/sebetci/geekcomputers/Batch/whereis.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/whereis.bat
 :: @test        OK
 :: @todo        Notify the client if the program is not present in the system path.
 :: ===========================================================================================================

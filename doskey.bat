@@ -1,12 +1,12 @@
 :: ===========================================================================================================
 :: @file        doskey.bat
 :: @brief       Recall and edit commands at the DOS prompt, and create macros.
-:: @author      Craig Richards
-:: @date        29.03.2013
+:: @update      27.05.2022
+:: @version     1.1
 :: @version     1.7
 :: @description Create Aliases for DOS screen
 :: @usage       doskey.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/doskey.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/doskey.bat
 :: @reference   https://ss64.com/nt/doskey.html
 :: @reference   https://docs.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads
 :: @reference   https://github.com/geekcomputers/Batch/issues/5

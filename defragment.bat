@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        defragment.bat
 :: @brief       The batch file I used to use to schedule a defrag of the c:\, using the AT command
-:: @author      Craig Richards
-:: @date        24.01.2008
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       defragment.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/defragment.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/defragment.bat
 :: @reference   https://ss64.com/nt/defrag.html
 :: @note        This script must be run in a command window with administrator rights.
 :: @test        OK

@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        puttyBackup.bat
 :: @brief       This is used to backup all my PuTTY settings out of the registry
-:: @author      Craig Richards
-:: @date        19.01.2011
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       puttyBackup.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/puttyBackup.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/puttyBackup.bat
 :: @changelog   1.1. Edited the script to create variables for the filename and the registry key.
 :: @note        This script must be run in a command window with administrator rights.
 :: @test        X

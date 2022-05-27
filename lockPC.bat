@@ -1,11 +1,10 @@
 :: ===========================================================================================================
 :: @file        lookPC.bat
 :: @brief       Lock your PC.
-:: @author      Craig Richards
-:: @date        08.12.2010
-:: @version     1.0
+:: @update      27.05.2022
+:: @version     1.1
 :: @usage       lookPC.bat
-:: @see         https://github.com/sebetci/geekcomputers/Batch/lookPC.bat
+:: @see         https://github.com/sebetci/Batch-Script-Basics/blob/master/lockPC.bat
 :: @reference   https://community.spiceworks.com/topic/611015-lock-domain-workstation-with-gpo
 :: @test        OK
 :: @todo        The existence of files and directories should be checked.
