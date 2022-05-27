@@ -1,14 +1,36 @@
-@echo off
+:: ===========================================================================================================
+:: @file        lookPC.bat
+:: @brief       Lock your PC.
+:: @author      Craig Richards
+:: @date        08.12.2010
+:: @version     1.0
+:: @usage       lookPC.bat
+:: @see         https://github.com/sebetci/geekcomputers/Batch/lookPC.bat
+:: @reference   https://community.spiceworks.com/topic/611015-lock-domain-workstation-with-gpo
+:: @test        OK
+:: @todo        The existence of files and directories should be checked.
+:: ===========================================================================================================
 
-REM The above command turns off the output for the script
+@ECHO OFF
 
-REM Script Name		: lockpc.bat
-REM Author				: Craig Richards
-REM Created			: 08th-December-2010
-REM Last Modified	: 
-REM Version				: 1.0
-REM Modifications		: 
-REM
-REM	 Description		: This simple batchfile will lock your PC once clicked upon.  You can schedule this via the at scheduler to lock the file at a specified time
+IF %ERRORLEVEL% EQU 0 (
+    %windir%\System32\RunDLL32.exe User32.dll,LockWorkStation
+)
 
-Rundll32.exe User32.dll,LockWorkStation
+GOTO :EOF
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function prints the help menu on the screen.
+:: @parameter  None
+:: @return     Returns 1 if the help menu is displayed.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:HELP
+    FOR %%H IN (/h /help -help -h) DO (
+        IF /I "%~1" EQU "%%~H" (
+            ECHO.
+            ECHO [BRIEF] Lock your PC.
+            ECHO [USAGE] lockPC.bat
+            EXIT /B 1
+        )
+    )
+    EXIT /B 0
