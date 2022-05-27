@@ -1,46 +1,86 @@
-@echo off
+:: ===========================================================================================================
+:: @file        logOff.bat
+:: @brief       Custom log off batch script for my current work PC
+:: @author      Craig Richards
+:: @date        15.03.2011
+:: @version     1.0
+:: @usage       logOff.bat
+:: @see         https://github.com/sebetci/geekcomputers/Batch/logOff.bat
+:: @reference   http://technet.microsoft.com/en-us/sysinternals/bb897443
+:: @changelog   1.1. Changed hard coded path from C:\Documents and Settings\my name to %USERPROFILE%
+:: @changelog   1.1. Changed the hard coded path for drive to %HOMEDRIVE%
+:: @changelog   1.2. Added the section to call my python script to compress my puttylogs when I log off the machine
+:: @test        X
+:: @todo        The existence of files and directories should be checked.
+:: ===========================================================================================================
 
-REM The above command turns off the output for the script
+@ECHO OFF
 
-REM Script Name		: logoff.bat
-REM Author				: Craig Richards
-REM Created			: 15th-April-2011
-REM Last Modified	: 17th-October-2011
-REM Version				: 1.2
-REM Modifications		: 1.1 - Changed hard coded path from C:\Documents and Settings\my name to %USERPROFILE%
-REM							: 1.1 - Changed the hard coded path for drive to %HOMEDRIVE%
-REM							: 1.2 - Added the section to call my python script to compress my puttylogs when I log off the machine
-REM
-REM Description		: Custom log off batch script for my current work PC
+CALL :HELP
 
-REM Clear all Temporary Internet Files
+IF %ERRORLEVEL% EQU 0 (
+    :: Clear all temporary internet files
+    %windir%\System32\RunDLL32.exe InetCpl.cpl,ClearMyTracksByProcess 8
 
-RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
+    :: Clear IE History
+    %windir%\System32\RunDLL32.exe InetCpl.cpl,ClearMyTracksByProcess 1
 
-REM Clear IE History
+    :: Remove all files from %TEMP%
+    SDELETE -S %TEMP%/*.*
 
-RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1
+    :: Remove list of recently opened documents.
+    SDELETE "%USERPROFILE%\Recent\*.*"
 
-REM Remove all files from %TEMP% - You can get a copy of sdelete here http://technet.microsoft.com/en-us/sysinternals/bb897443
+    :: Clears DNS records and resets TCP/IP
+    IPCONFIG /FLUSHDNS
 
-sdelete -s %TEMP%/*.*
+    :: Compress the days putty logs
+    PYTHON PuttyLogs.py
 
-REM Remove list of Recently opened documents - You can get a copy of sdelete here http://technet.microsoft.com/en-us/sysinternals/bb897443
+    :: Log the date/time
+    ECHO %DATE% %TIME% >> %HOMEDRIVE%\logOff.txt
 
-sdelete "%USERPROFILE%\Recent\*.*"
+    :: If the user enters the 'Y' character, the PC will be shut down.
+    CHOICE /C SELECT /M "Are you sure you want to continue? [Y]/[N]"
+    :: If the user enters the 'Y' character, the PC will be shut down.
+    IF %ERRORLEVEL% EQU 1 CALL :SHUTDOWN
+    :: If the user enters the 'N' character, the PC will not be shut down.
+    IF %ERRORLEVEL% EQU 2 CALL :CONTINUE
+)
 
-REM Clears DNS records and Resets TCP/IP
+GOTO :EOF
 
-ipconfig /flushdns
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function allows the PC to be turned off.
+:: @parameter  None
+:: @return     None
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:SHUTDOWN
+    :: Log off my machine
+    SHUTDOWN -L -F
+    EXIT /B 0
 
-REM Compress the days puttylogs - 1.2 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function prints a message on the screen because the PC is not turned off.
+:: @parameter  None
+:: @return     None
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:CONTINUE
+    ECHO "Continue..."
+    EXIT /B 0
 
-python puttylogs.py
-
-REM Log the date/time 
-
-echo %DATE% %TIME% >> %HOMEDRIVE%\logoff.txt
-
-REM Log off my machine
-
-shutdown -l -f 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: @function   This function prints the help menu on the screen.
+:: @parameter  None
+:: @return     Returns 1 if the help menu is displayed.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:HELP
+    FOR %%H IN (/h /help -help -h) DO (
+        IF /I "%~1" EQU "%%~H" (
+            ECHO.
+            ECHO [BRIEF] Custom log off batch script for my current work PC
+            ECHO [USAGE] logOff.bat
+            EXIT /B 1
+        )
+    )
+    EXIT /B 0
