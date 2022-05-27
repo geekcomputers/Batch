@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# This tells Git that never replace CRLF with LF for `.bat` files when 
+# they are written to the Git object database ("checkin").
+*.bat -text
